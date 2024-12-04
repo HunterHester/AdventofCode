@@ -1,6 +1,4 @@
-// problem: https://adventofcode.com/2024/day/2
-
-const data = `18 21 22 24 26 29 28
+18 21 22 24 26 29 28
 9 11 14 17 18 21 21
 48 51 54 56 60
 6 8 10 11 16
@@ -999,54 +997,4 @@ const data = `18 21 22 24 26 29 28
 56 58 60 61 63 66 69
 37 35 33 32 31 29 26
 40 43 44 47 49 51
-64 62 61 58 56`
-
-const processStr = (data) => {
-    return data.split('\n').map(row => 
-        row.split(' ').map(num => parseInt(num, 10))
-    )
-}
-
-const matrix = processStr(data);
-
-// console.log(matrix)
-
-const partOne = function (data) {
-    let res = 0;
-
-    for (let i = 0; i < data.length; i++) {
-        let level = data[i];
-        let isIncrement;
-        let isConsistent = true;
-
-        for (let j = 0; j < level.length - 1; j++) {
-            if (j === 0) {
-                isIncrement = level[j] < level[j + 1];
-            }
-
-            const difference = Math.abs(level[j] - level[j + 1]);
-
-            if (difference < 1 || difference > 3) {
-                isConsistent = false;
-                break;
-            }
-
-            if ((level[j] < level[j + 1] && isIncrement) || 
-                (level[j] > level[j + 1] && !isIncrement)) {
-                continue;
-            } else {
-                isConsistent = false;
-                break;
-            }
-        }
-
-        if (isConsistent) {
-            res += 1; 
-        }
-    }
-
-    console.log(res);
-};
-
-partOne(matrix)
-
+64 62 61 58 56
